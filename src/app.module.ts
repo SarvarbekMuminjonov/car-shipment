@@ -4,6 +4,7 @@ import { KnexModule } from 'nest-knexjs';
 // import { AuthModule } from './auth/auth.module';
 import { OrdersModule } from './orders/orders.module';
 import { CarsModule } from './cars/cars.module';
+import { CompaniesModule } from './companies/companies.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { CarsModule } from './cars/cars.module';
     }),
     OrdersModule,
     CarsModule,
+    CompaniesModule,
   ],
   controllers: [],
   providers: [],

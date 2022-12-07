@@ -1,24 +1,24 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Knex } from 'knex';
 import { InjectConnection } from 'nest-knexjs';
-import { CarQueryDto } from './dto/car-query.dto';
-import { CreateCarDto } from './dto/create-car.dto';
-import { UpdateCarDto } from './dto/update-car.dto';
+import { CreateCompanyDto } from './dto/create-company.dto';
+import { UpdateCompanyDto } from './dto/update-company.dto';
+import { CompanyQueryDto } from './dto/company-query.dto';
 
 @Injectable()
-export class CarsService {
+export class CompaniesService {
   constructor(@InjectConnection() private readonly knex: Knex) {}
-  async create(createCarDto: CreateCarDto) {
+  async create(createCompanyDto: CreateCompanyDto) {
     try {
-      return await this.knex.table('models').insert({ ...createCarDto });
+      return await this.knex.table('companies').insert({ ...createCompanyDto });
     } catch (error) {
-      throw new HttpException('Car model not created', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Not created', HttpStatus.BAD_REQUEST);
     }
   }
 
-  async findAll(query: CarQueryDto) {
+  async findAll(query: CompanyQueryDto) {
     try {
-      const db_query = this.knex.table('models').select('*');
+      const db_query = this.knex.table('companies').select('*');
       if (query) return await db_query.where({ ...query });
       return await query;
     } catch (error) {
@@ -28,17 +28,17 @@ export class CarsService {
 
   async findOne(id: number) {
     try {
-      return await this.knex.table('models').select('*').where({ id: id });
+      return await this.knex.table('companies').select('*').where({ id: id });
     } catch (error) {
       throw new HttpException('Not found', HttpStatus.BAD_REQUEST);
     }
   }
 
-  async update(id: number, updateCarDto: UpdateCarDto) {
+  async update(id: number, updateCompanyDto: UpdateCompanyDto) {
     try {
       return await this.knex
         .table('models')
-        .update({ ...updateCarDto })
+        .update({ ...updateCompanyDto })
         .where({ id: id });
     } catch (error) {
       throw new HttpException('Not updated', HttpStatus.BAD_REQUEST);
