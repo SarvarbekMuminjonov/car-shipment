@@ -5,11 +5,12 @@ import { KnexModule } from 'nest-knexjs';
 import { OrdersModule } from './orders/orders.module';
 import { CarsModule } from './cars/cars.module';
 import { CompaniesModule } from './companies/companies.module';
+import { ZipCodesModule } from './zip_codes/zip_codes.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `.${process.env.NODE_ENV}.env`,
+      envFilePath: `.env`,
       isGlobal: true,
     }),
     KnexModule.forRootAsync({
@@ -22,9 +23,9 @@ import { CompaniesModule } from './companies/companies.module';
             database: config.get('POSTGRESS_DB'),
             user: config.get('POSTGRESS_USERNAME'),
             password: config.get('POSTGRESS_PASSWORD'),
-            ssl: {
-              rejectUnauthorized: false,
-            },
+            // ssl: {
+            //   rejectUnauthorized: false,
+            // },
           },
         },
       }),
@@ -32,6 +33,7 @@ import { CompaniesModule } from './companies/companies.module';
     OrdersModule,
     CarsModule,
     CompaniesModule,
+    ZipCodesModule,
   ],
   controllers: [],
   providers: [],

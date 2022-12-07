@@ -7,7 +7,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: process.env.DB_NAME,
+      database: process.env.POSTGRESS_DB,
       user: process.env.POSTGRESS_USERNAME,
       password: process.env.POSTGRESS_PASSWORD,
     },
@@ -16,7 +16,7 @@ module.exports = {
       max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations',
+      tableName: 'car_shipment',
     },
   },
 
