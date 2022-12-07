@@ -2,14 +2,14 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Knex } from 'knex';
 import { InjectConnection } from 'nest-knexjs';
 import { CreateOrderDto } from './dto/create-order.dto';
-import { UpdateOrderDto } from './dto/update-order.dto';
+// import { UpdateOrderDto } from './dto/update-order.dto';
 
 @Injectable()
 export class OrdersService {
   constructor(@InjectConnection() private readonly knex: Knex) {}
   async create(createOrderDto: CreateOrderDto) {
     try {
-      return await this.knex.table('orders').insert(createOrderDto);
+      return await this.knex.table('orders').insert({ ...createOrderDto });
     } catch (error) {
       throw new HttpException('Order not created', HttpStatus.BAD_REQUEST);
     }
