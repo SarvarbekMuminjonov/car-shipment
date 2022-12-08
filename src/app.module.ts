@@ -23,9 +23,9 @@ import { ZipCodesModule } from './zip_codes/zip_codes.module';
             database: config.get('POSTGRESS_DB'),
             user: config.get('POSTGRESS_USERNAME'),
             password: config.get('POSTGRESS_PASSWORD'),
-            // ssl: {
-            //   rejectUnauthorized: false,
-            // },
+            ssl: {
+              rejectUnauthorized: false,
+            },
           },
         },
       }),
