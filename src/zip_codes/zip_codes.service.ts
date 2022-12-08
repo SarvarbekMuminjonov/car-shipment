@@ -23,9 +23,9 @@ export class ZipCodesService {
         .orWhereILike('state', `${query?.state}%`)
         .orWhereILike('country', `${query?.country}%`)
         .orWhereILike('county', `${query?.county}%`)
-        .limit(10);
+        .limit(5);
     }
-    return await db_query.limit(10);
+    return await db_query.limit(5);
     // } catch (error) {
     //   throw new HttpException('Not found', HttpStatus.BAD_REQUEST);
     // }
