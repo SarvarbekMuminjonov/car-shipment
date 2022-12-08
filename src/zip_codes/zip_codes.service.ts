@@ -13,13 +13,22 @@ export class ZipCodesService {
   // }
 
   async findAll(query: ZipQueryDto) {
-    try {
-      const db_query = this.knex.table('zip_codes').select('*');
-      if (query) return await db_query.where(query);
-      return db_query;
-    } catch (error) {
-      throw new HttpException('Not found', HttpStatus.BAD_REQUEST);
+    // try {
+    const db_query = this.knex('zip_codes');
+    if (Object.keys(query).length > 0) {
+      console.log(query.country, typeof query.zip);
+      return await db_query
+        // .where({ id: 1 })
+        .whereILike('zip', `${query?.zip}%`)
+        .orWhereILike('state', `${query?.state}%`)
+        .orWhereILike('country', `${query?.country}%`)
+        .orWhereILike('county', `${query?.county}%`)
+        .limit(10);
     }
+    return await db_query.limit(10);
+    // } catch (error) {
+    //   throw new HttpException('Not found', HttpStatus.BAD_REQUEST);
+    // }
   }
 
   async findOne(id: number) {
