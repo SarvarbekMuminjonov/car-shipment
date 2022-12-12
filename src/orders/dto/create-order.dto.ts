@@ -16,7 +16,7 @@ export class CreateOrderDto {
   @ApiProperty({ type: String })
   @IsPhoneNumber('US')
   @IsString()
-  phone_number: string;
+  phone: string;
 
   @ApiProperty({ type: String })
   @IsNotEmpty()
@@ -51,7 +51,7 @@ export class CreateOrderDto {
   @ApiProperty({ type: String })
   @IsNotEmpty()
   @IsString()
-  fullname: string;
+  name: string;
 
   @ApiProperty({ type: String })
   @IsNotEmpty()

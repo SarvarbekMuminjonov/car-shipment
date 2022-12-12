@@ -21,7 +21,7 @@ export class ZipCodesService {
         // .where({ id: 1 })
         .whereILike('zip', `${query?.zip}%`)
         .orWhereILike('state', `${query?.state}%`)
-        .orWhereILike('country', `${query?.country}%`)
+        // .orWhereILike('country', `${query?.country}%`)
         .orWhereILike('county', `${query?.county}%`)
         .limit(5);
     }

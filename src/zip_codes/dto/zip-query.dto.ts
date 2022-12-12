@@ -14,8 +14,8 @@ export class ZipQueryDto {
   @IsOptional()
   @IsString()
   county?: string;
-  @ApiProperty({ type: String, required: false })
-  @IsOptional()
-  @IsString()
-  country?: string;
+  // @ApiProperty({ type: String, required: false })
+  // @IsOptional()
+  // @IsString()
+  // country?: string;
 }
