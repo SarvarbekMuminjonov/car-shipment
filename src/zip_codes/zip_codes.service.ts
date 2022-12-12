@@ -15,8 +15,8 @@ export class ZipCodesService {
   async findAll(query: ZipQueryDto) {
     // try {
     const db_query = this.knex('zip_codes');
-    if (Object.keys(query).length > 0) {
-      console.log(query.country, typeof query.zip);
+    if (Object.keys(query).length > 0 && query) {
+      // console.log(query.country, typeof query.zip);
       return await db_query
         // .where({ id: 1 })
         .whereILike('zip', `${query?.zip}%`)
