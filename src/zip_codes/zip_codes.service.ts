@@ -22,7 +22,7 @@ export class ZipCodesService {
         .whereILike('zip', `${query?.zip}%`)
         .orWhereILike('state', `${query?.state}%`)
         // .orWhereILike('country', `${query?.country}%`)
-        .orWhereILike('county', `${query?.county}%`)
+        .orWhereILike('primary_city', `${query?.primary_city}%`)
         .limit(5);
     }
     return await db_query.limit(5);

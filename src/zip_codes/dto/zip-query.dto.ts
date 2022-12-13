@@ -13,7 +13,7 @@ export class ZipQueryDto {
   @ApiProperty({ type: String, required: false })
   @IsOptional()
   @IsString()
-  county?: string;
+  primary_city?: string;
   // @ApiProperty({ type: String, required: false })
   // @IsOptional()
   // @IsString()
