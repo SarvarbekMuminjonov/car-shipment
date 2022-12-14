@@ -16,16 +16,22 @@ export class ZipCodesService {
     // try {
     const db_query = this.knex('zip_codes');
     if (Object.keys(query).length > 0 && query) {
-      // console.log(query.country, typeof query.zip);
+      if ('state' in query && query['state'] !== undefined)
+        return await db_query
+          .distinct('state', 'primary_city')
+          .whereILike('state', `${query?.state}%`)
+          .limit(10);
+      if ('primary_city' in query && query['primary_city'] !== undefined)
+        return await db_query
+          .distinct('primary_city', 'state')
+          .whereILike('primary_city', `${query?.primary_city}%`)
+          .limit(10);
       return await db_query
         // .where({ id: 1 })
         .whereILike('zip', `${query?.zip}%`)
-        .orWhereILike('state', `${query?.state}%`)
-        // .orWhereILike('country', `${query?.country}%`)
-        .orWhereILike('primary_city', `${query?.primary_city}%`)
-        .limit(5);
+        .limit(10);
     }
-    return await db_query.limit(5);
+    return await db_query.limit(10);
     // } catch (error) {
     //   throw new HttpException('Not found', HttpStatus.BAD_REQUEST);
     // }
