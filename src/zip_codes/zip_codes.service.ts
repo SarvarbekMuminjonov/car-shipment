@@ -18,12 +18,12 @@ export class ZipCodesService {
     if (Object.keys(query).length > 0 && query) {
       if ('state' in query && query['state'] !== undefined)
         return await db_query
-          .distinct('state', 'primary_city')
+          .distinct('state', 'primary_city', 'id')
           .whereILike('state', `${query?.state}%`)
           .limit(10);
       if ('primary_city' in query && query['primary_city'] !== undefined)
         return await db_query
-          .distinct('primary_city', 'state')
+          .distinct('primary_city', 'state', 'id')
           .whereILike('primary_city', `${query?.primary_city}%`)
           .limit(10);
       return await db_query
