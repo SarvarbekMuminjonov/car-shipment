@@ -14,7 +14,7 @@ export class CreateOrderDto {
   to: string;
 
   @ApiProperty({ type: String })
-  @IsPhoneNumber('US')
+  // @IsPhoneNumber('US')
   @IsString()
   phone: string;
 
