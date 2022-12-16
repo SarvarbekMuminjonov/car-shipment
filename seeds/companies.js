@@ -6,7 +6,7 @@ exports.seed = async function (knex) {
   // Deletes ALL existing entries
   await knex('companies').del();
   await knex.raw(`
-INSERT INTO companies(company_name) VALUES ('AC');
+  INSERT INTO companies(company_name) VALUES ('AC');
 INSERT INTO companies(company_name) VALUES ('Acura');
 INSERT INTO companies(company_name) VALUES ('Alfa Romeo');
 INSERT INTO companies(company_name) VALUES ('Am General');
@@ -115,11 +115,12 @@ INSERT INTO companies(company_name) VALUES ('Triumph');
 INSERT INTO companies(company_name) VALUES ('Volkswagen');
 INSERT INTO companies(company_name) VALUES ('Volvo');
 INSERT INTO companies(company_name) VALUES ('Willys');
+INSERT INTO companies(company_name) VALUES ('Freight');
 INSERT INTO companies(company_name) VALUES ('Yacht');
 INSERT INTO companies(company_name) VALUES ('Yugo');
-INSERT INTO companies(company_name) VALUES ('Heavy Equipment');
-INSERT INTO companies(company_name) VALUES ('Freight');
 INSERT INTO companies(company_name) VALUES ('Harley-davidson');
+INSERT INTO companies(company_name) VALUES ('Heavy Equipment');
 INSERT INTO companies(company_name) VALUES ('Other');
-`);
+
+  `);
 };
