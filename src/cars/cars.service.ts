@@ -19,8 +19,9 @@ export class CarsService {
   async findAll(query: CarQueryDto) {
     try {
       const db_query = this.knex.table('models').select('*');
-      if (query) return await db_query.where({ ...query });
-      return await query;
+      if (Object.keys(query).length > 0 && query.company_id !== undefined)
+        return await db_query.where({ ...query });
+      return await db_query.limit(10);
     } catch (error) {
       throw new HttpException('Not found', HttpStatus.BAD_REQUEST);
     }
