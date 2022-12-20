@@ -4,6 +4,6 @@ export enum TransportType {
 }
 
 export enum Vehicle {
-  Running = 'running',
+  Running = 'run',
   Inoperable = 'inoperable',
 }

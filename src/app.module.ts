@@ -6,6 +6,7 @@ import { OrdersModule } from './orders/orders.module';
 import { CarsModule } from './cars/cars.module';
 import { CompaniesModule } from './companies/companies.module';
 import { ZipCodesModule } from './zip_codes/zip_codes.module';
+import { ContactsModule } from './contacts/contacts.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { ZipCodesModule } from './zip_codes/zip_codes.module';
     CarsModule,
     CompaniesModule,
     ZipCodesModule,
+    ContactsModule,
   ],
   controllers: [],
   providers: [],
